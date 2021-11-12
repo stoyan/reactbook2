@@ -1,0 +1,14 @@
+.Header {
+  background-color: #f6f6f6;
+  margin: 0;
+  padding: 20px 20px 20px 14px;
+  display: grid;
+  grid-template-columns: 1fr min-content 180px;
+  gap: 20px;
+  color: #a0a0a0;
+}
+
+.Header div {
+  display: flex;
+  align-items: center;
+}

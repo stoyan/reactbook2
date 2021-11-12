@@ -1,0 +1,20 @@
+.Rating {
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 28px;
+}
+
+.Rating.RatingReadonly {
+  cursor: auto;
+}
+
+.Rating span {
+  filter: grayscale(0.9);
+  display: inline-block;
+  width: 1.1em;
+}
+
+.Rating .RatingOn {
+  filter: grayscale(0);
+}
