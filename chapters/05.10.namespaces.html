@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Namespeces</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+      a {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      const Library = {
+        Book({id}) {
+          return `Book ${id}`;
+        },
+        Reader({id}) {
+          return `Reader ${id}`;
+        },
+      };
+
+      ReactDOM.render(
+        <div>
+          <Library.Reader id={456} /> is reading <Library.Book id={123} />
+        </div>,
+        document.getElementById('app'),
+      );
+    </script>
+  </body>
+</html>

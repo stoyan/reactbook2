@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="03.table.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- my app renders here -->
+    </div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      class Excel extends React.Component {
+        render() {
+          return (
+            <table>
+              <thead>
+                <tr>
+                  {this.props.headers.map((title, idx) => { 
+                    return <th key={idx}>{title}</th>;
+                  })}
+                </tr>
+              </thead>
+            </table>
+          );
+        }
+      }
+
+      const headers = ['Book', 'Author', 'Language', 'Published', 'Sales'];
+
+      ReactDOM.render(
+        <Excel headers={headers} />,
+        document.getElementById('app'),
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX anti-XSS</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      function Example() {
+        const firstname =
+          'John<scr' + 'ipt src="https://evil/co.js"></scr' + 'ipt>';
+        return <h2>Hello {firstname}!</h2>;
+      }
+
+      ReactDOM.render(<Example />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

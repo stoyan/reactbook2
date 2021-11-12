@@ -1,0 +1,25 @@
+.Actions button {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition-duration: 0.1s;
+  transition-property: transform;
+  outline: none;
+  margin: 0 4px;
+  background: none;
+  color: #575757;
+}
+
+.Actions button:hover {
+  transform: scale(1.1);
+}
+
+.Actions img {
+  width: 18px;
+}
+
+.Actions .ActionsInfo {
+  background: #f0f0f0;
+  font-size: 0.9em;
+  line-height: 1em;
+}

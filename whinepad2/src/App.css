@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: white;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial,
+    sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  margin: 0;
+}
+
+input,
+textarea {
+  font: inherit;
+  border: 1px solid #a0a0a0;
+  border-radius: 3px;
+}
+

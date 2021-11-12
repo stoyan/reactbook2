@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FancyLink</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      function FancyLink(props) {
+        const classes = ['link-core'];
+        switch (props.variant) {
+          case 'small':
+            classes.push('link-small');
+            break;
+          case 'huge':
+            classes.push('link-huge');
+            break;
+          default:
+            classes.push('link-default');
+        }
+
+        return (
+          <a {...props} className={classes.join(' ')}>
+            {props.children}
+          </a>
+        );
+      }
+      
+      function FancyLink2(props) {
+        const classes = ['link-core'];
+        switch (props.variant) {
+          case 'small':
+            classes.push('link-small');
+            break;
+          case 'huge':
+            classes.push('link-huge');
+            break;
+          default:
+            classes.push('link-default');
+        }
+        
+        const attribs = Object.assign({}, props); // shallow clone
+        delete attribs.variant;
+
+        return (
+          <a {...attribs} className={classes.join(' ')}>
+            {props.children}
+          </a>
+        );
+      }
+
+      function FancyLink3(props) {
+        const {variant, ...attribs} = props;
+        const classes = ['link-core'];
+        switch (variant) {
+          case 'small':
+            classes.push('link-small');
+            break;
+          case 'huge':
+            classes.push('link-huge');
+            break;
+          default:
+            classes.push('link-default');
+        }
+
+        return (
+          <a {...attribs} className={classes.join(' ')}>
+            {props.children}
+          </a>
+        );
+      }
+
+      ReactDOM.render(
+        <FancyLink
+          href="https://example.org"
+          rel="canonical"
+          target="_blank"
+          variant="small">
+          <span>Follow me</span>
+        </FancyLink>,
+        document.getElementById('app1'),
+      );
+      
+      ReactDOM.render(
+        <FancyLink2
+          href="https://example.org"
+          rel="canonical"
+          target="_blank"
+          variant="huge">
+          <span>Follow me cloned</span>
+        </FancyLink2>,
+        document.getElementById('app2'),
+      );
+      
+      ReactDOM.render(
+        <FancyLink3
+          href="https://example.org"
+          rel="canonical"
+          target="_blank"
+          variant="small">
+          <span>Follow me spread</span>
+        </FancyLink3>,
+        document.getElementById('app3'),
+      );
+    </script>
+  </body>
+</html>

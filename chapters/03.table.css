@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: white;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial,
+    sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+td {
+  border-top: 1px solid black;
+  cursor: cell;
+  padding: 5px;
+}
+
+th {
+  cursor: pointer;
+  padding: 5px;
+}
+
+table {
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.toolbar {
+  margin-left: 20px;
+}
+
+.toolbar a,
+.toolbar button {
+  background: #3498db linear-gradient(to bottom, #3498db, #2980b9);
+  border-radius: 0.3em;
+  border: 0;
+  box-shadow: 0 1px 3px #666;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.toolbar a:hover,
+.toolbar button:hover {
+  background: #3cb0fd linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+
+}

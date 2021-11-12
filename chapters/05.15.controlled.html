@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX Forms: controlled</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+      br {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      const profile = {
+        firstname: 'Jessie',
+        lastname: 'Pinkman',
+        gender: 'male',
+        acceptTOC: false,
+      };
+
+      class ControlledForm extends React.Component {
+        constructor() {
+          super();
+          this.state = {...profile};
+          this.updateForm = this.updateForm.bind(this);
+        }
+
+        updateForm({target}) {
+          this.setState({
+            [target.name]:
+              target.type === 'checkbox' ? target.checked : target.value,
+          });
+        }
+
+        render() {
+          return (
+            <form>
+              <label>
+                First name:{' '}
+                <input
+                  type="text"
+                  name="firstname"
+                  value={this.state.firstname}
+                  onChange={this.updateForm}
+                />
+              </label>
+              <br />
+              <label>
+                Last name:{' '}
+                <input
+                  type="text"
+                  name="lastname"
+                  value={this.state.lastname}
+                  onChange={this.updateForm}
+                />
+              </label>
+              <br />
+              Gender:
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  checked={this.state.gender === 'male'}
+                  onChange={this.updateForm}
+                  value="male"
+                />
+                Male
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  checked={this.state.gender === 'female'}
+                  onChange={this.updateForm}
+                  value="female"
+                />
+                Female
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  name="acceptTOC"
+                  checked={this.state.acceptTOC === true}
+                  onChange={this.updateForm}
+                />
+                I accept terms and things
+              </label>
+              <br />
+              <input type="submit" value="Save" />
+            </form>
+          );
+        }
+      }
+
+      ReactDOM.render(<ControlledForm />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX Forms: value vs defaultValue</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      function changeHandler({target}) {
+        console.log('value: ', target.value);
+        console.log('defaultValue: ', target.defaultValue);
+      }
+
+      function ExampleForm() {
+        return (
+          <form>
+            <label>
+              Type here: <input defaultValue="hello" onChange={changeHandler} />
+            </label>
+          </form>
+        );
+      }
+
+      function ExampleTextarea() {
+        return (
+          <form>
+            <label>
+              Type here:{' '}
+              <textarea
+                defaultValue={'hello\nworld'}
+                onChange={changeHandler}
+              />{' '}
+            </label>
+          </form>
+        );
+      }
+
+      function ExampleSelect() {
+        return (
+          <form>
+            <select defaultValue="move">
+              <option value="stay">Should I stay</option>
+              <option value="move">or should I go</option>
+            </select>
+          </form>
+        );
+      }
+
+      function selectHandler({target}) {
+        console.log(
+          Array.from(target.selectedOptions).map((option) => option.value),
+        );
+      }
+
+      function ExampleMultiSelect() {
+        return (
+          <form>
+            <select
+              defaultValue={['stay', 'move']}
+              multiple={true}
+              onChange={selectHandler}>
+              <option value="stay">Should I stay</option>
+              <option value="move">or should I go</option>
+              <option value="trouble">If I stay it will be trouble</option>
+            </select>
+          </form>
+        );
+      }
+
+      ReactDOM.render(<ExampleForm />, document.getElementById('app1'));
+      ReactDOM.render(<ExampleTextarea />, document.getElementById('app2'));
+      ReactDOM.render(<ExampleSelect />, document.getElementById('app3'));
+      ReactDOM.render(<ExampleMultiSelect />, document.getElementById('app4'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this.state</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="00.normal.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- my app renders here -->
+    </div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      class TextAreaCounter extends React.Component {
+        constructor() {
+          super();
+          this.state = {};
+          this.onTextChange = this.onTextChange.bind(this);
+        }
+
+        onTextChange(event) {
+          this.setState({
+            text: event.target.value,
+          });
+        }
+
+        render() {
+          const text = 'text' in this.state ? this.state.text : this.props.text;
+          return (
+            <div>
+              <textarea defaultValue={text} onChange={this.onTextChange} />
+              <h3>{text.length}</h3>
+            </div>
+          );
+        }
+      }
+      TextAreaCounter.defaultProps = {
+        text: 'Count me as I type',
+      };
+
+      ReactDOM.render(
+        <TextAreaCounter text="Bob" />,
+        document.getElementById('app'),
+      );
+    </script>
+  </body>
+</html>

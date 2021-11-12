@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX whitespace</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      function Example1() {
+        return (
+          <h1>
+            {1} plus {2} is   {3}
+          </h1>
+        );
+      }
+
+      function Example2() {
+        return (
+          <h1>
+            {1}
+            plus
+            {2}
+            is
+            {3}
+          </h1>
+        );
+      }
+      
+      function Example3() {
+        return (
+          <h1>
+            {/* space expressions */}
+            {1}
+            {' '}plus{' '}
+            {2}
+            {' '}is{' '}
+            {3}
+          </h1>
+        );
+      }
+      
+      function Example4() {
+        return (
+          <h1>
+            {/* space glued to string expressions */}
+            {1}
+            {' plus '}
+            {2}
+            {' is '}
+            {3}
+          </h1>
+        );
+      }
+      
+      ReactDOM.render(<Example1 />, document.getElementById('app1'));
+      ReactDOM.render(<Example2 />, document.getElementById('app2'));
+      ReactDOM.render(<Example3 />, document.getElementById('app3'));
+      ReactDOM.render(<Example4 />, document.getElementById('app4'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX Forms: onChange</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+      a {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      function changeHandler(which, event) {
+        console.log(
+          `onChange called on the ${which} with value "${event.target.value}"`,
+        );
+      }
+
+      function ExampleForm() {
+        return (
+          <form onChange={changeHandler.bind(null, 'form')}>
+            <label>
+              Type here:
+              <br />
+              <input type="text" onChange={changeHandler.bind(null, 'text input')} />
+            </label>
+            <div>Make your pick:</div>
+            <label>
+              <input
+                type="radio"
+                name="pick"
+                value="option1"
+                onChange={changeHandler.bind(null, 'radio 1')}
+              />
+              Option 1
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="pick"
+                value="option2"
+                onChange={changeHandler.bind(null, 'radio 2')}
+              />
+              Option 2
+            </label>
+          </form>
+        );
+      }
+
+      ReactDOM.render(<ExampleForm />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

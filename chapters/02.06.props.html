@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>props</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="00.normal.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- my app renders here -->
+    </div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      const MyComponent = function (props) {
+        return (
+          <span>
+            My name is <em>{props.name}</em>
+          </span>
+        );
+      };
+
+      ReactDOM.render(
+        <MyComponent name="Bob" />,
+        document.getElementById('app'),
+      );
+    </script>
+  </body>
+</html>

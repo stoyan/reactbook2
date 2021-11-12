@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML vs JSX</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+      a {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      function InvalidExample() {
+        const em = <em class="important" />;
+        const label = <label for="thatInput" />;
+        return (
+          <div>
+            {em}
+            {label}
+          </div>
+        );
+      }
+
+      function Example() {
+        const em = <em className="important" />;
+        const label = <label htmlFor="thatInput" />;
+        return (
+          <div>
+            {em}
+            {label}
+          </div>
+        );
+      }
+
+      function InvalidStyle() {
+        return <em style="font-size: 2em; line-height: 1.6" />;
+      }
+
+      function ValidStyle() {
+        const styles = {
+          fontSize: '2em',
+          lineHeight: '1.6',
+        };
+        return <em style={styles}>Valid style</em>;
+      }
+
+      function InlineStyle() {
+        return (
+          <em style={{fontSize: '2em', lineHeight: '1.6'}}>Inline style</em>
+        );
+      }
+
+      function reticulateSplines() {
+        alert('Will do!');
+      }
+
+      function Camel() {
+        const invalid = <a onclick="reticulateSplines()">nothing happens</a>;
+        const valid = <a onClick={reticulateSplines}>something happens</a>;
+        return (
+          <span>
+            {invalid}
+            <br />
+            {valid}
+          </span>
+        );
+      }
+
+      ReactDOM.render(<Example />, document.getElementById('app1'));
+      ReactDOM.render(<ValidStyle />, document.getElementById('app2'));
+      ReactDOM.render(<InlineStyle />, document.getElementById('app3'));
+      ReactDOM.render(<Camel />, document.getElementById('app4'));
+    </script>
+  </body>
+</html>

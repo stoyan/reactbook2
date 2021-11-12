@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX Forms: uncontrolled onSubmit</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+      br {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      const profile = {
+        firstname: 'Jessie',
+        lastname: 'Pinkman',
+        gender: 'male',
+        acceptTOC: false,
+      };
+
+      function updateProfile(ev) {
+        ev.preventDefault();
+        const form = ev.target;
+        Object.keys(profile).forEach((name) => {
+          const element = form[name];
+          profile[name] =
+            element.type === 'checkbox' ? element.checked : element.value;
+        });
+        // console.log(profile);
+      }
+
+      function UncontrolledForm() {
+        return (
+          <form onSubmit={updateProfile}>
+            <label>
+              First name:{' '}
+              <input
+                type="text"
+                name="firstname"
+                defaultValue={profile.firstname}
+              />
+            </label>
+            <br />
+            <label>
+              Last name:{' '}
+              <input
+                type="text"
+                name="lastname"
+                defaultValue={profile.lastname}
+              />
+            </label>
+            <br />
+            Gender:
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                defaultChecked={profile.gender === 'male'}
+                value="male"
+              />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                defaultChecked={profile.gender === 'female'}
+                value="female"
+              />
+              Female
+            </label>
+            <br />
+            <label>
+              <input
+                type="checkbox"
+                name="acceptTOC"
+                defaultChecked={profile.acceptTOC === true}
+              />
+              I accept terms and things
+            </label>
+            <br />
+            <input type="submit" value="Save" />
+          </form>
+        );
+      }
+
+      ReactDOM.render(<UncontrolledForm />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

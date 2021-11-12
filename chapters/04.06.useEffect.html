@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Functional Lifecycles</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="03.table.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- my app renders here -->
+    </div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script src="react/prop-types.js"></script>
+    <script type="text/babel">
+      const useState = React.useState;
+      const useEffect = React.useEffect;
+      function Example() {
+        useEffect(() => {
+          console.log('Rendering <Example/>', Date.now());
+          return () => {
+            // log when the component will be removed form the DOM
+            // like `componentDidMount()`
+            console.log('Removing <Example/>', Date.now());
+          };
+        }, []);
+        return <p>I am an example child component.</p>;
+      }
+
+      function ExampleParent() {
+        const [visible, setVisible] = useState(false);
+        return (
+          <div>
+            <button onClick={() => setVisible(!visible)}>
+              Hello there, press me {visible ? 'again' : ''}
+            </button>
+            {visible ? <Example /> : null}
+          </div>
+        );
+      }
+
+      ReactDOM.render(<ExampleParent />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

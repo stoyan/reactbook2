@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSX spread attributes</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      const attr = {
+        href: 'https://example.org',
+        target: '_blank',
+      };
+      function Example1() {
+        return (
+          <a 
+            href={attr.href} 
+            target={attr.target}>
+            Follow me
+          </a>
+        );
+      }
+
+      function Example2() {
+        return <a {...attr}>Follow me</a>;
+      }
+
+      ReactDOM.render(<Example1 />, document.getElementById('app1'));
+      ReactDOM.render(<Example2 />, document.getElementById('app2'));
+    </script>
+  </body>
+</html>

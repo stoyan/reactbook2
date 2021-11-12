@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML entities</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      const RAQUO = ' \u00bb';
+
+      function Example1() {
+        return <h2>More info &raquo;</h2>;
+      }
+
+      function Example2() {
+        return <h2>{'More info &raquo;'}</h2>;
+      }
+
+      function Example3() {
+        return <h2>{'More info \u00bb'}</h2>;
+      }
+
+      function Example4() {
+        return (
+          <div>
+            <h2>{'More info' + RAQUO}</h2>
+            <h2>
+              {'More info'}
+              {RAQUO}
+            </h2>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Example1 />, document.getElementById('app1'));
+      ReactDOM.render(<Example2 />, document.getElementById('app2'));
+      ReactDOM.render(<Example3 />, document.getElementById('app3'));
+      ReactDOM.render(<Example4 />, document.getElementById('app4'));
+
+    </script>
+  </body>
+</html>

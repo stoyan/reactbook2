@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lifecycle metods</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="00.normal.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- my app renders here -->
+    </div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script type="text/babel">
+      class TextAreaCounter extends React.Component {
+        constructor() {
+          super();
+          this.state = {};
+          this.onTextChange = this.onTextChange.bind(this);
+        }
+
+        onTextChange(event) {
+          this.setState({
+            text: event.target.value,
+          });
+        }
+
+        componentDidMount() {
+          console.log('componentDidMount');
+        }
+        componentWillUnmount() {
+          console.log('componentWillUnmount');
+        }
+        componentDidUpdate(prevProps, prevState, snapshot) {
+          console.log(
+            'componentDidUpdate     ',
+            prevProps,
+            prevState,
+            snapshot,
+          );
+        }
+        getSnapshotBeforeUpdate(prevProps, prevState) {
+          console.log('getSnapshotBeforeUpdate', prevProps, prevState);
+          return 'hello';
+        }
+        shouldComponentUpdate(newProps, newState) {
+          console.log('shouldComponentUpdate  ', newProps, newState);
+          return true;
+        }
+
+        render() {
+          const text = 'text' in this.state ? this.state.text : this.props.text;
+          return (
+            <div>
+              <textarea value={text} onChange={this.onTextChange} />
+              <h3>{text.length}</h3>
+            </div>
+          );
+        }
+      }
+      TextAreaCounter.defaultProps = {
+        text: 'Count me as I type',
+      };
+
+      const myTextAreaCounter = ReactDOM.render(
+        <TextAreaCounter text="Bob" />,
+        document.getElementById('app'),
+      );
+
+      // try this in the console
+      // ReactDOM.render(React.createElement('p', null, 'Enough counting!'), app)
+    </script>
+  </body>
+</html>
