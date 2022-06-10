@@ -104,3 +104,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+whinepad2/package-lock.json
+whinepad2/build/
